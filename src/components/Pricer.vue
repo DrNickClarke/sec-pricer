@@ -25,7 +25,7 @@ var pxData = {
   3: [
     { name: "px", value: 99.12 },
     { name: "dv01", value: 6.93 },
-    { name: "accrued:", value: 0.87 }
+    { name: "accrued", value: 0.87 }
   ],
   4: [
     { name: "px", value: 101.35 },
