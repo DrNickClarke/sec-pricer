@@ -14,13 +14,14 @@
 </template>
 
 <script>
-import SearchBar from './SearchBar'
-import Pricer from './Pricer'
+import SearchBar from "./SearchBar";
+import Pricer from "./Pricer";
 
 export default {
-  name: 'Tabs',
+  name: "Tabs",
   components: {
-    SearchBar, Pricer
+    SearchBar,
+    Pricer
   }
-}
+};
 </script>
