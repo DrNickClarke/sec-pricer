@@ -1,4 +1,4 @@
-# blank-app
+# sec-pricer
 
 ## Project setup
 ```
