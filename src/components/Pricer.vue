@@ -42,10 +42,30 @@ var pxData = {
     { name: "dv01", value: 0.124 },
     { name: "accrued", value: 0.35 }
   ],
-  11: [{ name: "px", value: 37.71 }, { name: "div yield", value: 3.45 }],
-  14: [{ name: "px", value: 125.22 }, { name: "div yield", value: 0.45 }],
-  15: [{ name: "px", value: 12.56 }, { name: "div yield", value: 12.76 }],
-  17: [{ name: "px", value: 67.97 }, { name: "div yield", value: 0.08 }]
+  11: [
+    { name: "px", value: 1.23 },
+    { name: "vol", value: 23.83 },
+    { name: "delta", value: 0.63 },
+    { name: "div yield", value: 3.45 }
+  ],
+  14: [
+    { name: "px", value: 0.78 },
+    { name: "vol", value: 18.52 },
+    { name: "delta", value: -0.33 },
+    { name: "div yield", value: 0.45 }
+  ],
+  15: [
+    { name: "px", value: 0.84 },
+    { name: "vol", value: 15.23 },
+    { name: "delta", value: 0.52 },
+    { name: "div yield", value: 12.76 }
+  ],
+  17: [
+    { name: "px", value: 2.45 },
+    { name: "vol", value: 25.23 },
+    { name: "delta", value: -0.41 },
+    { name: "div yield", value: 0.08 }
+  ]
 };
 
 export default {

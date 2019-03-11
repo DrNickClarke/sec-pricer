@@ -59,10 +59,10 @@ var secList = [
   { id: 4, type: "Bond", name: "AAPL 2% 2021" },
   { id: 6, type: "Bond", name: "IBM 4.5% 2023" },
   { id: 7, type: "Bond", name: "ABC 0.5% 2025" },
-  { id: 11, type: "Equity", name: "VOD LN" },
-  { id: 14, type: "Equity", name: "MSFT UQ" },
-  { id: 15, type: "Equity", name: "SIE GY" },
-  { id: 17, type: "Equity", name: "BRK.A UN" }
+  { id: 11, type: "EquityOpt", name: "VOD LN 101C 3m" },
+  { id: 14, type: "EquityOpt", name: "MSFT UQ 99P 2m" },
+  { id: 15, type: "EquityOpt", name: "SIE GY 105C 3m" },
+  { id: 17, type: "EquityOpt", name: "BRK.A UN 98P 6m" }
 ];
 
 function secListFilter(filtField, filtVal) {
@@ -77,8 +77,8 @@ function secListFilter(filtField, filtVal) {
 }
 
 var bondSecs = secListFilter("type", "Bond");
-var equitySecs = secListFilter("type", "Equity");
-var allSecs = { Equity: equitySecs, Bond: bondSecs };
+var equitySecs = secListFilter("type", "EquityOpt");
+var allSecs = { EquityOpt: equitySecs, Bond: bondSecs };
 
 export default {
   name: "SearchBar",
