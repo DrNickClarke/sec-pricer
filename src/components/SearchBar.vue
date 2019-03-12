@@ -7,7 +7,7 @@
             v-model="assetClass"
             :items="assetClasses"
             label="Security Class"
-            @change="setAssetClass()"
+            @change="resetSec()"
           ></v-select>
         </v-flex>
         <v-flex xs6 sm4 d-flex>
@@ -15,7 +15,7 @@
             v-model="secName"
             :items="secNames()"
             label="Security"
-            @change="setSecurity()"
+            @change="setSecFromName(secName, true)"
             clearable
           ></v-autocomplete>
         </v-flex>
@@ -76,9 +76,19 @@ function secListFilter(filtField, filtVal) {
   return st;
 }
 
+/*function buildAssetClassLookup() {
+  var acl = {};
+  for (var i in secList) {
+    var s = secList[i];
+    acl[s[i].id] = s[i].type;
+  }
+  return acl;
+}*/
+
 var bondSecs = secListFilter("type", "Bond");
 var equitySecs = secListFilter("type", "EquityOpt");
 var allSecs = { EquityOpt: equitySecs, Bond: bondSecs };
+//var assetClassLookup = buildAssetClassLookup();
 
 export default {
   name: "SearchBar",
@@ -101,13 +111,35 @@ export default {
       }
       return null;
     },
-    setSecurity() {
-      var sec = this.findSecName(this.secName);
-      this.$store.commit("setSecurity", sec);
-      this.security = sec;
+    findSecId(secId) {
+      for (var i in secList) {
+        if (secList[i].id === secId) {
+          return secList[i];
+        }
+      }
+      return null;
     },
-    setAssetClass() {
+    setSec(sec) {
+      if (sec != null) {
+        this.assetClass = sec.type;
+        this.secName = sec.name;
+        this.$store.commit("setSecurity", sec);
+      }
+    },
+    setSecFromName(secName, setUrl) {
+      var sec = this.findSecName(secName);
+      this.setSec(sec);
+      if (setUrl) {
+        this.$router.push({ name: "sec", params: { secId: sec.id } });
+      }
+    },
+    setSecFromId(secId) {
+      var sec = this.findSecId(secId);
+      this.setSec(sec);
+    },
+    resetSec() {
       this.security = null;
+      this.secName = null;
       this.$store.commit("setSecurity", null);
     },
     getSafeSecField(field) {
@@ -133,10 +165,18 @@ export default {
   created() {
     this.assetClasses = Object.keys(allSecs);
     this.assetClass = this.assetClasses[0];
-    this.security = null;
-    this.secName = null;
+    this.resetSec();
     this.date = new Date().toISOString().substr(0, 10);
     this.secs = allSecs;
+  },
+  mounted() {
+    this.$store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case "setLoadSecId":
+          this.setSecFromId(state.loadSecId);
+          break;
+      }
+    });
   }
 };
 </script>
