@@ -8,6 +8,9 @@
         <v-flex xs12>
           <Pricer />
         </v-flex>
+        <v-flex xs12>
+          <Rest />
+        </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -16,13 +19,15 @@
 <script>
 import SearchBar from "./SearchBar";
 import Pricer from "./Pricer";
+import Rest from "./Rest";
 
 export default {
   name: "Tabs",
   props: { loadSecId: Number },
   components: {
     SearchBar,
-    Pricer
+    Pricer,
+    Rest
   }
 };
 </script>
