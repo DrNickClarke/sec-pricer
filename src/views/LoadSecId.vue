@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <Tabs v-bind:loadSecid="0"></Tabs>
+  <div class="loadSecId">
+    <Tabs />
   </div>
 </template>
 
@@ -9,9 +9,13 @@
 import Tabs from "@/components/Tabs.vue";
 
 export default {
-  name: "home",
+  name: "loadSecId",
+  props: { secId: Number },
   components: {
     Tabs
+  },
+  mounted() {
+    this.$store.commit("setLoadSecId", this.secId);
   }
 };
 </script>
